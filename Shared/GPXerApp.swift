@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TrackKit
 
 @main
 struct GPXerApp: App {

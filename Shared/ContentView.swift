@@ -7,27 +7,51 @@
 
 import SwiftUI
 import CoreData
+import GPXKit
+import Combine
+import TrackKit
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \GPXTrackManaged.date, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
-
+    private var tracks: FetchedResults<GPXTrackManaged>
+    
+    @State var fileURL: URL?
+    @State var showDocumentPicker = false
+    @State var error: Error? {
+        didSet {
+            showError = error != nil
+        }
+    }
+    @State var showError = false
+    
+    @StateObject var gpxLoader: GPXLoader = GPXLoader()
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(tracks) { track in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        if let track = try? track.track {
+                            TrackDetails(track: track)
+                        }
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        VStack(alignment: .leading) {
+                            Text(track.name!)
+                            if let desc = track.trackDescription {
+                                Text(desc)
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
+            .navigationTitle("Tracks")
             .toolbar {
 #if os(iOS)
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -35,20 +59,40 @@ struct ContentView: View {
                 }
 #endif
                 ToolbarItem {
-                    Button(action: addItem) {
+                    Button {
+                        showDocumentPicker.toggle()
+                    } label: {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
             }
             Text("Select an item")
         }
+        .onReceive(gpxLoader.$track) {
+            if let track = $0 {
+                addTrack(track)
+            }
+        }
+        .onReceive(gpxLoader.$error) {
+            error = $0
+        }
+        .sheet(isPresented: $showDocumentPicker) {
+            GPXDocumentPicker { url in
+                gpxLoader.getTrack(url)
+            }
+        }.alert(error?.localizedDescription ?? "Error Occured", isPresented: $showError) {
+            
+        }
     }
 
-    private func addItem() {
+    private func addTrack(_ track: GPXTrack) {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
+            let newItem = GPXTrackManaged(context: viewContext)
+            newItem.name = track.title
+            newItem.date = track.date ?? Date()
+            newItem.trackDescription = track.description
+            newItem.xmlString = GPXExporter(track: track).xmlString
+            
             do {
                 try viewContext.save()
             } catch {
@@ -62,7 +106,7 @@ struct ContentView: View {
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
+            offsets.map { tracks[$0] }.forEach(viewContext.delete)
 
             do {
                 try viewContext.save()
@@ -72,6 +116,31 @@ struct ContentView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+        }
+    }
+}
+
+
+class GPXLoader: ObservableObject {
+    @Published var track: GPXTrack?
+    @Published var error: Error?
+    
+    private var cancellable: AnyCancellable?
+    
+    init() {
+        
+    }
+    
+    func getTrack(_ url: URL) {
+        cancellable = GPXFileParser.load(from: url).sink { completion in
+            switch completion {
+            case .failure(let error):
+                self.error = error
+            case .finished:
+                break
+            }
+        } receiveValue: { track in
+            self.track = track
         }
     }
 }

@@ -7,52 +7,237 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		44F3E61727B5930800716DD4 /* GPXer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60427B5930800716DD4 /* GPXer.xcdatamodeld */; };
-		44F3E61827B5930800716DD4 /* GPXer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60427B5930800716DD4 /* GPXer.xcdatamodeld */; };
+		4482504E27B5AA90006D7A2B /* GPXDocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482504D27B5AA90006D7A2B /* GPXDocumentPicker.swift */; };
+		4482505527B5BFC6006D7A2B /* TrackDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482505427B5BFC6006D7A2B /* TrackDetails.swift */; };
+		4482505927B5C25E006D7A2B /* CA_Sec_A_tracks.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4482505827B5C15F006D7A2B /* CA_Sec_A_tracks.gpx */; };
+		4482505C27B604E8006D7A2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482505B27B604E8006D7A2B /* MapView.swift */; };
+		4482506527B61A1B006D7A2B /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4482506427B61A1B006D7A2B /* Intents.framework */; platformFilter = maccatalyst; };
+		4482506C27B61A1B006D7A2B /* GPXerIntent.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 4482506227B61A1B006D7A2B /* GPXerIntent.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		4482507A27B61AB1006D7A2B /* TrackKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = 4482507927B61AB1006D7A2B /* TrackKit.docc */; };
+		4482508027B61AB1006D7A2B /* TrackKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4482507627B61AB1006D7A2B /* TrackKit.framework */; };
+		4482508727B61AB1006D7A2B /* TrackKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482508627B61AB1006D7A2B /* TrackKitTests.swift */; };
+		4482508827B61AB1006D7A2B /* TrackKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 4482507827B61AB1006D7A2B /* TrackKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4482508B27B61AB1006D7A2B /* TrackKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4482507627B61AB1006D7A2B /* TrackKit.framework */; };
+		4482508C27B61AB1006D7A2B /* TrackKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4482507627B61AB1006D7A2B /* TrackKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4482509427B61AD1006D7A2B /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60827B5930800716DD4 /* Persistence.swift */; };
+		4482509527B61AD6006D7A2B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482505127B5BA71006D7A2B /* Extensions.swift */; };
+		4482509727B61AE9006D7A2B /* GPXKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4482509627B61AE9006D7A2B /* GPXKit */; };
+		4482509A27B61C09006D7A2B /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4482509927B61C09006D7A2B /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
+		448250C427B6C3AB006D7A2B /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4482509927B61C09006D7A2B /* Intents.intentdefinition */; settings = {ATTRIBUTES = (no_codegen, ); }; };
+		448250C527B6C3B1006D7A2B /* Intents.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 4482509927B61C09006D7A2B /* Intents.intentdefinition */; };
+		448250C727B6C44C006D7A2B /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482506727B61A1B006D7A2B /* IntentHandler.swift */; };
+		448250CB27B6C48D006D7A2B /* GetMileMarkerIntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448250CA27B6C48D006D7A2B /* GetMileMarkerIntentHandler.swift */; };
+		448250CC27B6C99B006D7A2B /* TrackKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4482507627B61AB1006D7A2B /* TrackKit.framework */; };
+		448250CD27B6C99B006D7A2B /* TrackKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4482507627B61AB1006D7A2B /* TrackKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		448B392C27B6EC72005309A1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448B392B27B6EC72005309A1 /* CloudKit.framework */; };
+		44914FFA27B6E77F008F5AB6 /* GPXer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60427B5930800716DD4 /* GPXer.xcdatamodeld */; };
 		44F3E61927B5930800716DD4 /* GPXerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60627B5930800716DD4 /* GPXerApp.swift */; };
-		44F3E61A27B5930800716DD4 /* GPXerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60627B5930800716DD4 /* GPXerApp.swift */; };
 		44F3E61B27B5930800716DD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60727B5930800716DD4 /* ContentView.swift */; };
-		44F3E61C27B5930800716DD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60727B5930800716DD4 /* ContentView.swift */; };
-		44F3E61D27B5930800716DD4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60827B5930800716DD4 /* Persistence.swift */; };
-		44F3E61E27B5930800716DD4 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60827B5930800716DD4 /* Persistence.swift */; };
 		44F3E61F27B5930800716DD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F3E60927B5930800716DD4 /* Assets.xcassets */; };
-		44F3E62027B5930800716DD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F3E60927B5930800716DD4 /* Assets.xcassets */; };
+		44F3E62B27B5940A00716DD4 /* GPXKit in Frameworks */ = {isa = PBXBuildFile; productRef = 44F3E62A27B5940A00716DD4 /* GPXKit */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		4482506A27B61A1B006D7A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44F3E5FF27B5930700716DD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4482506127B61A1B006D7A2B;
+			remoteInfo = GPXerIntent;
+		};
+		4482508127B61AB1006D7A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44F3E5FF27B5930700716DD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4482507527B61AB1006D7A2B;
+			remoteInfo = TrackKit;
+		};
+		4482508327B61AB1006D7A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44F3E5FF27B5930700716DD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44F3E60D27B5930800716DD4;
+			remoteInfo = "GPXer (iOS)";
+		};
+		4482508927B61AB1006D7A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44F3E5FF27B5930700716DD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4482507527B61AB1006D7A2B;
+			remoteInfo = TrackKit;
+		};
+		448250CE27B6C99B006D7A2B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44F3E5FF27B5930700716DD4 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4482507527B61AB1006D7A2B;
+			remoteInfo = TrackKit;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4482507027B61A1B006D7A2B /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				4482506C27B61A1B006D7A2B /* GPXerIntent.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4482509027B61AB1006D7A2B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				4482508C27B61AB1006D7A2B /* TrackKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		448250D027B6C99B006D7A2B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				448250CD27B6C99B006D7A2B /* TrackKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		4482504D27B5AA90006D7A2B /* GPXDocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXDocumentPicker.swift; sourceTree = "<group>"; };
+		4482505127B5BA71006D7A2B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4482505427B5BFC6006D7A2B /* TrackDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetails.swift; sourceTree = "<group>"; };
+		4482505827B5C15F006D7A2B /* CA_Sec_A_tracks.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CA_Sec_A_tracks.gpx; sourceTree = "<group>"; };
+		4482505B27B604E8006D7A2B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		4482506227B61A1B006D7A2B /* GPXerIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GPXerIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		4482506427B61A1B006D7A2B /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		4482506727B61A1B006D7A2B /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		4482506927B61A1B006D7A2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4482507627B61AB1006D7A2B /* TrackKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TrackKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4482507827B61AB1006D7A2B /* TrackKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TrackKit.h; sourceTree = "<group>"; };
+		4482507927B61AB1006D7A2B /* TrackKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = TrackKit.docc; sourceTree = "<group>"; };
+		4482507F27B61AB1006D7A2B /* TrackKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TrackKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4482508627B61AB1006D7A2B /* TrackKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackKitTests.swift; sourceTree = "<group>"; };
+		4482509927B61C09006D7A2B /* Intents.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Intents.intentdefinition; sourceTree = "<group>"; };
+		448250C327B6C2B3006D7A2B /* GPXer (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GPXer (iOS).entitlements"; sourceTree = "<group>"; };
+		448250CA27B6C48D006D7A2B /* GetMileMarkerIntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMileMarkerIntentHandler.swift; sourceTree = "<group>"; };
+		448250D127B6D93B006D7A2B /* GPXer--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GPXer--iOS--Info.plist"; sourceTree = "<group>"; };
+		448250D227B6E18C006D7A2B /* GPXerIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GPXerIntent.entitlements; sourceTree = "<group>"; };
+		448B392B27B6EC72005309A1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		44F3E60527B5930800716DD4 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		44F3E60627B5930800716DD4 /* GPXerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXerApp.swift; sourceTree = "<group>"; };
 		44F3E60727B5930800716DD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		44F3E60827B5930800716DD4 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		44F3E60927B5930800716DD4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		44F3E60E27B5930800716DD4 /* GPXer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		44F3E61427B5930800716DD4 /* GPXer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GPXer.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		44F3E61627B5930800716DD4 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		4482505F27B61A1B006D7A2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4482506527B61A1B006D7A2B /* Intents.framework in Frameworks */,
+				448250CC27B6C99B006D7A2B /* TrackKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4482507327B61AB1006D7A2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4482509727B61AE9006D7A2B /* GPXKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4482507C27B61AB1006D7A2B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4482508027B61AB1006D7A2B /* TrackKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		44F3E60B27B5930800716DD4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44F3E61127B5930800716DD4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				448B392C27B6EC72005309A1 /* CloudKit.framework in Frameworks */,
+				44F3E62B27B5940A00716DD4 /* GPXKit in Frameworks */,
+				4482508B27B61AB1006D7A2B /* TrackKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4482505727B5C151006D7A2B /* GPX */ = {
+			isa = PBXGroup;
+			children = (
+				4482505827B5C15F006D7A2B /* CA_Sec_A_tracks.gpx */,
+			);
+			path = GPX;
+			sourceTree = "<group>";
+		};
+		4482506327B61A1B006D7A2B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				448B392B27B6EC72005309A1 /* CloudKit.framework */,
+				4482506427B61A1B006D7A2B /* Intents.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4482506627B61A1B006D7A2B /* GPXerIntent */ = {
+			isa = PBXGroup;
+			children = (
+				448250D227B6E18C006D7A2B /* GPXerIntent.entitlements */,
+				4482506927B61A1B006D7A2B /* Info.plist */,
+				4482506727B61A1B006D7A2B /* IntentHandler.swift */,
+				4482509927B61C09006D7A2B /* Intents.intentdefinition */,
+			);
+			path = GPXerIntent;
+			sourceTree = "<group>";
+		};
+		4482507727B61AB1006D7A2B /* TrackKit */ = {
+			isa = PBXGroup;
+			children = (
+				44F3E60827B5930800716DD4 /* Persistence.swift */,
+				4482505127B5BA71006D7A2B /* Extensions.swift */,
+				448250CA27B6C48D006D7A2B /* GetMileMarkerIntentHandler.swift */,
+				44F3E60427B5930800716DD4 /* GPXer.xcdatamodeld */,
+				4482507827B61AB1006D7A2B /* TrackKit.h */,
+				4482507927B61AB1006D7A2B /* TrackKit.docc */,
+			);
+			path = TrackKit;
+			sourceTree = "<group>";
+		};
+		4482508527B61AB1006D7A2B /* TrackKitTests */ = {
+			isa = PBXGroup;
+			children = (
+				4482508627B61AB1006D7A2B /* TrackKitTests.swift */,
+			);
+			path = TrackKitTests;
+			sourceTree = "<group>";
+		};
 		44F3E5FE27B5930700716DD4 = {
 			isa = PBXGroup;
 			children = (
+				448250D127B6D93B006D7A2B /* GPXer--iOS--Info.plist */,
+				448250C327B6C2B3006D7A2B /* GPXer (iOS).entitlements */,
 				44F3E60327B5930800716DD4 /* Shared */,
-				44F3E61527B5930800716DD4 /* macOS */,
+				4482506627B61A1B006D7A2B /* GPXerIntent */,
+				4482507727B61AB1006D7A2B /* TrackKit */,
+				4482508527B61AB1006D7A2B /* TrackKitTests */,
+				4482506327B61A1B006D7A2B /* Frameworks */,
 				44F3E60F27B5930800716DD4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -60,11 +245,13 @@
 		44F3E60327B5930800716DD4 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4482505727B5C151006D7A2B /* GPX */,
 				44F3E60627B5930800716DD4 /* GPXerApp.swift */,
 				44F3E60727B5930800716DD4 /* ContentView.swift */,
-				44F3E60827B5930800716DD4 /* Persistence.swift */,
+				4482505427B5BFC6006D7A2B /* TrackDetails.swift */,
+				4482504D27B5AA90006D7A2B /* GPXDocumentPicker.swift */,
+				4482505B27B604E8006D7A2B /* MapView.swift */,
 				44F3E60927B5930800716DD4 /* Assets.xcassets */,
-				44F3E60427B5930800716DD4 /* GPXer.xcdatamodeld */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -73,22 +260,86 @@
 			isa = PBXGroup;
 			children = (
 				44F3E60E27B5930800716DD4 /* GPXer.app */,
-				44F3E61427B5930800716DD4 /* GPXer.app */,
+				4482506227B61A1B006D7A2B /* GPXerIntent.appex */,
+				4482507627B61AB1006D7A2B /* TrackKit.framework */,
+				4482507F27B61AB1006D7A2B /* TrackKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		44F3E61527B5930800716DD4 /* macOS */ = {
-			isa = PBXGroup;
-			children = (
-				44F3E61627B5930800716DD4 /* macOS.entitlements */,
-			);
-			path = macOS;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		4482507127B61AB1006D7A2B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4482508827B61AB1006D7A2B /* TrackKit.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		4482506127B61A1B006D7A2B /* GPXerIntent */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4482506D27B61A1B006D7A2B /* Build configuration list for PBXNativeTarget "GPXerIntent" */;
+			buildPhases = (
+				4482505E27B61A1B006D7A2B /* Sources */,
+				4482505F27B61A1B006D7A2B /* Frameworks */,
+				4482506027B61A1B006D7A2B /* Resources */,
+				448250D027B6C99B006D7A2B /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				448250CF27B6C99B006D7A2B /* PBXTargetDependency */,
+			);
+			name = GPXerIntent;
+			productName = GPXerIntent;
+			productReference = 4482506227B61A1B006D7A2B /* GPXerIntent.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		4482507527B61AB1006D7A2B /* TrackKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4482508D27B61AB1006D7A2B /* Build configuration list for PBXNativeTarget "TrackKit" */;
+			buildPhases = (
+				4482507127B61AB1006D7A2B /* Headers */,
+				4482507227B61AB1006D7A2B /* Sources */,
+				4482507327B61AB1006D7A2B /* Frameworks */,
+				4482507427B61AB1006D7A2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TrackKit;
+			packageProductDependencies = (
+				4482509627B61AE9006D7A2B /* GPXKit */,
+			);
+			productName = TrackKit;
+			productReference = 4482507627B61AB1006D7A2B /* TrackKit.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4482507E27B61AB1006D7A2B /* TrackKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4482509127B61AB1006D7A2B /* Build configuration list for PBXNativeTarget "TrackKitTests" */;
+			buildPhases = (
+				4482507B27B61AB1006D7A2B /* Sources */,
+				4482507C27B61AB1006D7A2B /* Frameworks */,
+				4482507D27B61AB1006D7A2B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4482508227B61AB1006D7A2B /* PBXTargetDependency */,
+				4482508427B61AB1006D7A2B /* PBXTargetDependency */,
+			);
+			name = TrackKitTests;
+			productName = TrackKitTests;
+			productReference = 4482507F27B61AB1006D7A2B /* TrackKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		44F3E60D27B5930800716DD4 /* GPXer (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44F3E62327B5930800716DD4 /* Build configuration list for PBXNativeTarget "GPXer (iOS)" */;
@@ -96,31 +347,21 @@
 				44F3E60A27B5930800716DD4 /* Sources */,
 				44F3E60B27B5930800716DD4 /* Frameworks */,
 				44F3E60C27B5930800716DD4 /* Resources */,
+				4482507027B61A1B006D7A2B /* Embed App Extensions */,
+				4482509027B61AB1006D7A2B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4482506B27B61A1B006D7A2B /* PBXTargetDependency */,
+				4482508A27B61AB1006D7A2B /* PBXTargetDependency */,
 			);
 			name = "GPXer (iOS)";
+			packageProductDependencies = (
+				44F3E62A27B5940A00716DD4 /* GPXKit */,
+			);
 			productName = "GPXer (iOS)";
 			productReference = 44F3E60E27B5930800716DD4 /* GPXer.app */;
-			productType = "com.apple.product-type.application";
-		};
-		44F3E61327B5930800716DD4 /* GPXer (macOS) */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 44F3E62627B5930800716DD4 /* Build configuration list for PBXNativeTarget "GPXer (macOS)" */;
-			buildPhases = (
-				44F3E61027B5930800716DD4 /* Sources */,
-				44F3E61127B5930800716DD4 /* Frameworks */,
-				44F3E61227B5930800716DD4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "GPXer (macOS)";
-			productName = "GPXer (macOS)";
-			productReference = 44F3E61427B5930800716DD4 /* GPXer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -133,10 +374,17 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					44F3E60D27B5930800716DD4 = {
+					4482506127B61A1B006D7A2B = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
-					44F3E61327B5930800716DD4 = {
+					4482507527B61AB1006D7A2B = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					4482507E27B61AB1006D7A2B = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 44F3E60D27B5930800716DD4;
+					};
+					44F3E60D27B5930800716DD4 = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 				};
@@ -150,61 +398,292 @@
 				Base,
 			);
 			mainGroup = 44F3E5FE27B5930700716DD4;
+			packageReferences = (
+				44F3E62927B5940A00716DD4 /* XCRemoteSwiftPackageReference "GPXKit" */,
+			);
 			productRefGroup = 44F3E60F27B5930800716DD4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				44F3E60D27B5930800716DD4 /* GPXer (iOS) */,
-				44F3E61327B5930800716DD4 /* GPXer (macOS) */,
+				4482506127B61A1B006D7A2B /* GPXerIntent */,
+				4482507527B61AB1006D7A2B /* TrackKit */,
+				4482507E27B61AB1006D7A2B /* TrackKitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		4482506027B61A1B006D7A2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4482507427B61AB1006D7A2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4482507D27B61AB1006D7A2B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		44F3E60C27B5930800716DD4 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				44F3E61F27B5930800716DD4 /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44F3E61227B5930800716DD4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				44F3E62027B5930800716DD4 /* Assets.xcassets in Resources */,
+				4482505927B5C25E006D7A2B /* CA_Sec_A_tracks.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		4482505E27B61A1B006D7A2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				448250C727B6C44C006D7A2B /* IntentHandler.swift in Sources */,
+				4482509A27B61C09006D7A2B /* Intents.intentdefinition in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4482507227B61AB1006D7A2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4482507A27B61AB1006D7A2B /* TrackKit.docc in Sources */,
+				4482509527B61AD6006D7A2B /* Extensions.swift in Sources */,
+				448250C527B6C3B1006D7A2B /* Intents.intentdefinition in Sources */,
+				448250CB27B6C48D006D7A2B /* GetMileMarkerIntentHandler.swift in Sources */,
+				44914FFA27B6E77F008F5AB6 /* GPXer.xcdatamodeld in Sources */,
+				4482509427B61AD1006D7A2B /* Persistence.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4482507B27B61AB1006D7A2B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4482508727B61AB1006D7A2B /* TrackKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		44F3E60A27B5930800716DD4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				448250C427B6C3AB006D7A2B /* Intents.intentdefinition in Sources */,
+				4482505C27B604E8006D7A2B /* MapView.swift in Sources */,
+				4482505527B5BFC6006D7A2B /* TrackDetails.swift in Sources */,
 				44F3E61927B5930800716DD4 /* GPXerApp.swift in Sources */,
-				44F3E61D27B5930800716DD4 /* Persistence.swift in Sources */,
-				44F3E61727B5930800716DD4 /* GPXer.xcdatamodeld in Sources */,
+				4482504E27B5AA90006D7A2B /* GPXDocumentPicker.swift in Sources */,
 				44F3E61B27B5930800716DD4 /* ContentView.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		44F3E61027B5930800716DD4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				44F3E61A27B5930800716DD4 /* GPXerApp.swift in Sources */,
-				44F3E61E27B5930800716DD4 /* Persistence.swift in Sources */,
-				44F3E61827B5930800716DD4 /* GPXer.xcdatamodeld in Sources */,
-				44F3E61C27B5930800716DD4 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		4482506B27B61A1B006D7A2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4482506127B61A1B006D7A2B /* GPXerIntent */;
+			targetProxy = 4482506A27B61A1B006D7A2B /* PBXContainerItemProxy */;
+		};
+		4482508227B61AB1006D7A2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4482507527B61AB1006D7A2B /* TrackKit */;
+			targetProxy = 4482508127B61AB1006D7A2B /* PBXContainerItemProxy */;
+		};
+		4482508427B61AB1006D7A2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44F3E60D27B5930800716DD4 /* GPXer (iOS) */;
+			targetProxy = 4482508327B61AB1006D7A2B /* PBXContainerItemProxy */;
+		};
+		4482508A27B61AB1006D7A2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4482507527B61AB1006D7A2B /* TrackKit */;
+			targetProxy = 4482508927B61AB1006D7A2B /* PBXContainerItemProxy */;
+		};
+		448250CF27B6C99B006D7A2B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4482507527B61AB1006D7A2B /* TrackKit */;
+			targetProxy = 448250CE27B6C99B006D7A2B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		4482506E27B61A1B006D7A2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GPXerIntent/GPXerIntent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BR8CHTSE9B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GPXerIntent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GPXerIntent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.GPXer.GPXerIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4482506F27B61A1B006D7A2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = GPXerIntent/GPXerIntent.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BR8CHTSE9B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GPXerIntent/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = GPXerIntent;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.GPXer.GPXerIntent;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4482508E27B61AB1006D7A2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BR8CHTSE9B;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.TrackKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4482508F27B61AB1006D7A2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = BR8CHTSE9B;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.TrackKit;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		4482509227B61AB1006D7A2B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.TrackKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GPXer.app/GPXer";
+			};
+			name = Debug;
+		};
+		4482509327B61AB1006D7A2B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.TrackKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GPXer.app/GPXer";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		44F3E62127B5930800716DD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -319,12 +798,16 @@
 		44F3E62427B5930800716DD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "GPXer (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BR8CHTSE9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GPXer--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -348,12 +831,16 @@
 		44F3E62527B5930800716DD4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "GPXer (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BR8CHTSE9B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "GPXer--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -375,61 +862,36 @@
 			};
 			name = Release;
 		};
-		44F3E62727B5930800716DD4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.GPXer;
-				PRODUCT_NAME = GPXer;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		44F3E62827B5930800716DD4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 1;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 12.1;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = org.ryangilbert.GPXer;
-				PRODUCT_NAME = GPXer;
-				SDKROOT = macosx;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		4482506D27B61A1B006D7A2B /* Build configuration list for PBXNativeTarget "GPXerIntent" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4482506E27B61A1B006D7A2B /* Debug */,
+				4482506F27B61A1B006D7A2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4482508D27B61AB1006D7A2B /* Build configuration list for PBXNativeTarget "TrackKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4482508E27B61AB1006D7A2B /* Debug */,
+				4482508F27B61AB1006D7A2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4482509127B61AB1006D7A2B /* Build configuration list for PBXNativeTarget "TrackKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4482509227B61AB1006D7A2B /* Debug */,
+				4482509327B61AB1006D7A2B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		44F3E60227B5930700716DD4 /* Build configuration list for PBXProject "GPXer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -448,16 +910,31 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44F3E62627B5930800716DD4 /* Build configuration list for PBXNativeTarget "GPXer (macOS)" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				44F3E62727B5930800716DD4 /* Debug */,
-				44F3E62827B5930800716DD4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		44F3E62927B5940A00716DD4 /* XCRemoteSwiftPackageReference "GPXKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:mmllr/GPXKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4482509627B61AE9006D7A2B /* GPXKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44F3E62927B5940A00716DD4 /* XCRemoteSwiftPackageReference "GPXKit" */;
+			productName = GPXKit;
+		};
+		44F3E62A27B5940A00716DD4 /* GPXKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44F3E62927B5940A00716DD4 /* XCRemoteSwiftPackageReference "GPXKit" */;
+			productName = GPXKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		44F3E60427B5930800716DD4 /* GPXer.xcdatamodeld */ = {
