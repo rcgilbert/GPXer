@@ -13,6 +13,8 @@ struct TrackDetails: View {
     @State var track: GPXTrack
     @State var region: MKCoordinateRegion = MKCoordinateRegion()
     
+    @StateObject var locationManager = LocationManager()
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -44,12 +46,13 @@ struct TrackDetails: View {
                         }
                     }.padding()
                     Spacer()
-                }.background { Color.white }
+                }.background { Color(UIColor.systemBackground) }
             }
         }
         .navigationTitle(track.title)
         .onAppear {
             region = track.coordinateRegion
+            locationManager.requestPermission()
         }
     }
 }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GPXDocumentPicker: UIViewControllerRepresentable {
-    public let pickedCompletionHandler: (URL) -> Void
+    public let pickedCompletionHandler: ([URL]) -> Void
     
     func makeCoordinator() -> DocumentPickerCoordinator {
         DocumentPickerCoordinator(self)
@@ -17,6 +17,7 @@ struct GPXDocumentPicker: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> some UIViewController {
         let picker = UIDocumentPickerViewController(forOpeningContentTypes: [.init(filenameExtension: "gpx")!], asCopy: true)
         picker.delegate = context.coordinator
+        picker.allowsMultipleSelection = true
         return picker
     }
     
@@ -31,10 +32,7 @@ struct GPXDocumentPicker: UIViewControllerRepresentable {
         }
         
         func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
-            guard let url = urls.first else {
-                return
-            }
-            parent.pickedCompletionHandler(url)
+            parent.pickedCompletionHandler(urls)
         }
     }
 }

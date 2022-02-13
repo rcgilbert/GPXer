@@ -3,10 +3,14 @@
     <entity name="GPXTrackManaged" representedClassName=".GPXTrackManaged" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString=" &quot;Track&quot;" spotlightIndexingEnabled="YES"/>
+        <attribute name="orderIndex" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="trackDescription" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
         <attribute name="xmlString" attributeType="String" defaultValueString="&quot;&quot;"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GPXTrackManaged" inverseName="parent" inverseEntity="GPXTrackManaged"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GPXTrackManaged" inverseName="children" inverseEntity="GPXTrackManaged"/>
     </entity>
+    <fetchRequest name="fetchTopLevel" entity="GPXTrackManaged" predicateString="parent == nil" resultType="1"/>
     <elements>
-        <element name="GPXTrackManaged" positionX="-63" positionY="-9" width="128" height="89"/>
+        <element name="GPXTrackManaged" positionX="-63" positionY="-9" width="128" height="134"/>
     </elements>
 </model>

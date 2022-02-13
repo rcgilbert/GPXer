@@ -16,7 +16,7 @@ public class GetMileMarkerIntentHandler: NSObject, GetMileMarkerIntentHandling {
     
     public func handle(intent: GetMileMarkerIntent) async -> GetMileMarkerIntentResponse {
         guard let track = GPXTrack(intent: intent),
-              let location = intent.currentLocation?.location,
+              let location = intent.location?.location,
               let distance = track.distance(to: location) else {
             return GetMileMarkerIntentResponse(code: .failure, userActivity: nil)
         }
@@ -32,8 +32,8 @@ public class GetMileMarkerIntentHandler: NSObject, GetMileMarkerIntentHandling {
         return INObjectCollection(items: tracks.map { Track(identifier: $0.name ?? "Track", display: $0.name ?? "Track") })
     }
     
-    public func resolveCurrentLocation(for intent: GetMileMarkerIntent) async -> INPlacemarkResolutionResult {
-        if let location = intent.currentLocation {
+    public func resolveLocation(for intent: GetMileMarkerIntent) async -> INPlacemarkResolutionResult {
+        if let location = intent.location {
             return INPlacemarkResolutionResult.success(with: location)
         } else {
             return INPlacemarkResolutionResult.needsValue()

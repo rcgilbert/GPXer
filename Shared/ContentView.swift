@@ -15,8 +15,15 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \GPXTrackManaged.date, ascending: true)],
-        animation: .default)
+        sortDescriptors: [NSSortDescriptor(keyPath: \GPXTrackManaged.orderIndex,
+                                           ascending: true),
+                          NSSortDescriptor(keyPath:\GPXTrackManaged.date,
+                                           ascending: true),
+                          NSSortDescriptor(keyPath:\GPXTrackManaged.name,
+                                           ascending: true)],
+        predicate: NSPredicate(format: "parent == nil"),
+        animation: .default
+        )
     private var tracks: FetchedResults<GPXTrackManaged>
     
     @State var fileURL: URL?
@@ -49,6 +56,7 @@ struct ContentView: View {
                         }
                     }
                 }
+                .onMove(perform: move)
                 .onDelete(perform: deleteItems)
             }
             .navigationTitle("Tracks")
@@ -68,20 +76,44 @@ struct ContentView: View {
             }
             Text("Select an item")
         }
-        .onReceive(gpxLoader.$track) {
-            if let track = $0 {
-                addTrack(track)
-            }
+        .onReceive(gpxLoader.$tracks) { tracks in
+            tracks.forEach { addTrack($0) }
         }
         .onReceive(gpxLoader.$error) {
             error = $0
         }
         .sheet(isPresented: $showDocumentPicker) {
-            GPXDocumentPicker { url in
-                gpxLoader.getTrack(url)
+            GPXDocumentPicker { urls in
+                gpxLoader.getTracks(urls)
             }
         }.alert(error?.localizedDescription ?? "Error Occured", isPresented: $showError) {
             
+        }
+    }
+    
+    func move(from source: IndexSet, to destination: Int) {
+        // Make an array of items from fetched results
+        var revisedItems = tracks.map { $0 }
+        
+        // change the order of the items in the array
+        revisedItems.move(fromOffsets: source, toOffset: destination )
+        
+        // update the userOrder attribute in revisedItems to
+        // persist the new order. This is done in reverse order
+        // to minimize changes to the indices.
+        for reverseIndex in stride(from: revisedItems.count - 1,
+                                   through: 0,
+                                   by: -1) {
+            revisedItems[reverseIndex].orderIndex = Int32(reverseIndex)
+        }
+        
+        do {
+            try viewContext.save()
+        } catch {
+            // Replace this implementation with code to handle the error appropriately.
+            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            let nsError = error as NSError
+            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
         }
     }
 
@@ -92,7 +124,7 @@ struct ContentView: View {
             newItem.date = track.date ?? Date()
             newItem.trackDescription = track.description
             newItem.xmlString = GPXExporter(track: track).xmlString
-            
+            newItem.orderIndex = Int32(tracks.count)
             do {
                 try viewContext.save()
             } catch {
@@ -116,31 +148,6 @@ struct ContentView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
-        }
-    }
-}
-
-
-class GPXLoader: ObservableObject {
-    @Published var track: GPXTrack?
-    @Published var error: Error?
-    
-    private var cancellable: AnyCancellable?
-    
-    init() {
-        
-    }
-    
-    func getTrack(_ url: URL) {
-        cancellable = GPXFileParser.load(from: url).sink { completion in
-            switch completion {
-            case .failure(let error):
-                self.error = error
-            case .finished:
-                break
-            }
-        } receiveValue: { track in
-            self.track = track
         }
     }
 }

@@ -30,6 +30,8 @@
 		448250CC27B6C99B006D7A2B /* TrackKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4482507627B61AB1006D7A2B /* TrackKit.framework */; };
 		448250CD27B6C99B006D7A2B /* TrackKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4482507627B61AB1006D7A2B /* TrackKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		448B392C27B6EC72005309A1 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 448B392B27B6EC72005309A1 /* CloudKit.framework */; };
+		448B395627B7241E005309A1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448B395527B7241E005309A1 /* LocationManager.swift */; };
+		448B395827B73124005309A1 /* GPXLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448B395727B73124005309A1 /* GPXLoader.swift */; };
 		44914FFA27B6E77F008F5AB6 /* GPXer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60427B5930800716DD4 /* GPXer.xcdatamodeld */; };
 		44F3E61927B5930800716DD4 /* GPXerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60627B5930800716DD4 /* GPXerApp.swift */; };
 		44F3E61B27B5930800716DD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60727B5930800716DD4 /* ContentView.swift */; };
@@ -132,6 +134,8 @@
 		448250D127B6D93B006D7A2B /* GPXer--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GPXer--iOS--Info.plist"; sourceTree = "<group>"; };
 		448250D227B6E18C006D7A2B /* GPXerIntent.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GPXerIntent.entitlements; sourceTree = "<group>"; };
 		448B392B27B6EC72005309A1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
+		448B395527B7241E005309A1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		448B395727B73124005309A1 /* GPXLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXLoader.swift; sourceTree = "<group>"; };
 		44F3E60527B5930800716DD4 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		44F3E60627B5930800716DD4 /* GPXerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXerApp.swift; sourceTree = "<group>"; };
 		44F3E60727B5930800716DD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -251,6 +255,8 @@
 				4482505427B5BFC6006D7A2B /* TrackDetails.swift */,
 				4482504D27B5AA90006D7A2B /* GPXDocumentPicker.swift */,
 				4482505B27B604E8006D7A2B /* MapView.swift */,
+				448B395527B7241E005309A1 /* LocationManager.swift */,
+				448B395727B73124005309A1 /* GPXLoader.swift */,
 				44F3E60927B5930800716DD4 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -481,9 +487,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				448B395827B73124005309A1 /* GPXLoader.swift in Sources */,
 				448250C427B6C3AB006D7A2B /* Intents.intentdefinition in Sources */,
 				4482505C27B604E8006D7A2B /* MapView.swift in Sources */,
 				4482505527B5BFC6006D7A2B /* TrackDetails.swift in Sources */,
+				448B395627B7241E005309A1 /* LocationManager.swift in Sources */,
 				44F3E61927B5930800716DD4 /* GPXerApp.swift in Sources */,
 				4482504E27B5AA90006D7A2B /* GPXDocumentPicker.swift in Sources */,
 				44F3E61B27B5930800716DD4 /* ContentView.swift in Sources */,
@@ -808,6 +816,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "GPXer--iOS--Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) uses your location to display you position on GPX tracks. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -841,6 +850,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "GPXer--iOS--Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "$(PRODUCT_NAME) uses your location to display you position on GPX tracks. ";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

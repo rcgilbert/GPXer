@@ -24,12 +24,12 @@
 			<key>INIntentDescriptionID</key>
 			<string>YELzYZ</string>
 			<key>INIntentInput</key>
-			<string>currentLocation</string>
+			<string>location</string>
 			<key>INIntentLastParameterTag</key>
 			<integer>5</integer>
 			<key>INIntentManagedParameterCombinations</key>
 			<dict>
-				<key>currentLocation,track</key>
+				<key>location,track</key>
 				<dict>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
@@ -41,16 +41,12 @@
 			<string>GetMileMarker</string>
 			<key>INIntentParameterCombinations</key>
 			<dict>
-				<key>currentLocation,track</key>
+				<key>location,track</key>
 				<dict>
-					<key>INIntentParameterCombinationSubtitle</key>
-					<string>Get your current distance on a gpx track. </string>
-					<key>INIntentParameterCombinationSubtitleID</key>
-					<string>zrUiV7</string>
 					<key>INIntentParameterCombinationSupportsBackgroundExecution</key>
 					<true/>
 					<key>INIntentParameterCombinationTitle</key>
-					<string>Get your current mile marker</string>
+					<string>Get distrance traveled on ${track} at ${location}.</string>
 					<key>INIntentParameterCombinationTitleID</key>
 					<string>8gD4yL</string>
 				</dict>
@@ -61,7 +57,7 @@
 					<key>INIntentParameterConfigurable</key>
 					<true/>
 					<key>INIntentParameterDisplayName</key>
-					<string>Current Location</string>
+					<string>Location</string>
 					<key>INIntentParameterDisplayNameID</key>
 					<string>Ezs9Tl</string>
 					<key>INIntentParameterDisplayPriority</key>
@@ -69,10 +65,10 @@
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataType</key>
-						<string>Name</string>
+						<string>Address</string>
 					</dict>
 					<key>INIntentParameterName</key>
-					<string>currentLocation</string>
+					<string>location</string>
 					<key>INIntentParameterPromptDialogs</key>
 					<array>
 						<dict>
@@ -85,7 +81,7 @@
 							<key>INIntentParameterPromptDialogCustom</key>
 							<true/>
 							<key>INIntentParameterPromptDialogFormatString</key>
-							<string>What is you location?</string>
+							<string>What location should I use?</string>
 							<key>INIntentParameterPromptDialogFormatStringID</key>
 							<string>7Flk4G</string>
 							<key>INIntentParameterPromptDialogType</key>
@@ -171,7 +167,7 @@
 				<array>
 					<dict>
 						<key>INIntentResponseCodeFormatString</key>
-						<string>You have traveled ${distance}.</string>
+						<string>The distance traveled is ${distance}.</string>
 						<key>INIntentResponseCodeFormatStringID</key>
 						<string>duXlhR</string>
 						<key>INIntentResponseCodeName</key>

@@ -18,6 +18,7 @@ struct MapView: UIViewRepresentable {
         map.region = region
         let polyLine = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
         map.addOverlay(polyLine)
+        map.showsUserLocation = true
         return map
     }
     
