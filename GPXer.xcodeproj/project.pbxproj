@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4482504E27B5AA90006D7A2B /* GPXDocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482504D27B5AA90006D7A2B /* GPXDocumentPicker.swift */; };
-		4482505527B5BFC6006D7A2B /* TrackDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482505427B5BFC6006D7A2B /* TrackDetails.swift */; };
+		4482505527B5BFC6006D7A2B /* TrackDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482505427B5BFC6006D7A2B /* TrackDetailsView.swift */; };
 		4482505927B5C25E006D7A2B /* CA_Sec_A_tracks.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4482505827B5C15F006D7A2B /* CA_Sec_A_tracks.gpx */; };
 		4482505C27B604E8006D7A2B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482505B27B604E8006D7A2B /* MapView.swift */; };
 		4482506527B61A1B006D7A2B /* Intents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4482506427B61A1B006D7A2B /* Intents.framework */; platformFilter = maccatalyst; };
@@ -33,6 +33,7 @@
 		448B395627B7241E005309A1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448B395527B7241E005309A1 /* LocationManager.swift */; };
 		448B395827B73124005309A1 /* GPXLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 448B395727B73124005309A1 /* GPXLoader.swift */; };
 		44914FFA27B6E77F008F5AB6 /* GPXer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60427B5930800716DD4 /* GPXer.xcdatamodeld */; };
+		44E0E44827BC5A99002A9115 /* CreateCompoundGPXView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0E44727BC5A99002A9115 /* CreateCompoundGPXView.swift */; };
 		44F3E61927B5930800716DD4 /* GPXerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60627B5930800716DD4 /* GPXerApp.swift */; };
 		44F3E61B27B5930800716DD4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F3E60727B5930800716DD4 /* ContentView.swift */; };
 		44F3E61F27B5930800716DD4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44F3E60927B5930800716DD4 /* Assets.xcassets */; };
@@ -116,7 +117,7 @@
 /* Begin PBXFileReference section */
 		4482504D27B5AA90006D7A2B /* GPXDocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXDocumentPicker.swift; sourceTree = "<group>"; };
 		4482505127B5BA71006D7A2B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		4482505427B5BFC6006D7A2B /* TrackDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetails.swift; sourceTree = "<group>"; };
+		4482505427B5BFC6006D7A2B /* TrackDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsView.swift; sourceTree = "<group>"; };
 		4482505827B5C15F006D7A2B /* CA_Sec_A_tracks.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = CA_Sec_A_tracks.gpx; sourceTree = "<group>"; };
 		4482505B27B604E8006D7A2B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4482506227B61A1B006D7A2B /* GPXerIntent.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GPXerIntent.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +137,7 @@
 		448B392B27B6EC72005309A1 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS15.2.sdk/System/Library/Frameworks/CloudKit.framework; sourceTree = DEVELOPER_DIR; };
 		448B395527B7241E005309A1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		448B395727B73124005309A1 /* GPXLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXLoader.swift; sourceTree = "<group>"; };
+		44E0E44727BC5A99002A9115 /* CreateCompoundGPXView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompoundGPXView.swift; sourceTree = "<group>"; };
 		44F3E60527B5930800716DD4 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		44F3E60627B5930800716DD4 /* GPXerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXerApp.swift; sourceTree = "<group>"; };
 		44F3E60727B5930800716DD4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -252,7 +254,8 @@
 				4482505727B5C151006D7A2B /* GPX */,
 				44F3E60627B5930800716DD4 /* GPXerApp.swift */,
 				44F3E60727B5930800716DD4 /* ContentView.swift */,
-				4482505427B5BFC6006D7A2B /* TrackDetails.swift */,
+				4482505427B5BFC6006D7A2B /* TrackDetailsView.swift */,
+				44E0E44727BC5A99002A9115 /* CreateCompoundGPXView.swift */,
 				4482504D27B5AA90006D7A2B /* GPXDocumentPicker.swift */,
 				4482505B27B604E8006D7A2B /* MapView.swift */,
 				448B395527B7241E005309A1 /* LocationManager.swift */,
@@ -489,8 +492,9 @@
 			files = (
 				448B395827B73124005309A1 /* GPXLoader.swift in Sources */,
 				448250C427B6C3AB006D7A2B /* Intents.intentdefinition in Sources */,
+				44E0E44827BC5A99002A9115 /* CreateCompoundGPXView.swift in Sources */,
 				4482505C27B604E8006D7A2B /* MapView.swift in Sources */,
-				4482505527B5BFC6006D7A2B /* TrackDetails.swift in Sources */,
+				4482505527B5BFC6006D7A2B /* TrackDetailsView.swift in Sources */,
 				448B395627B7241E005309A1 /* LocationManager.swift in Sources */,
 				44F3E61927B5930800716DD4 /* GPXerApp.swift in Sources */,
 				4482504E27B5AA90006D7A2B /* GPXDocumentPicker.swift in Sources */,

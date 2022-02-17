@@ -7,23 +7,46 @@
 
 import SwiftUI
 import MapKit
+import GPXKit
 
 struct MapView: UIViewRepresentable {
     @Binding var region: MKCoordinateRegion
-    @State var lineCoordinates: [CLLocationCoordinate2D]
+    @Binding var tracks: [GPXTrack]
     
     func makeUIView(context: Context) -> some UIView {
         let map = MKMapView()
         map.delegate = context.coordinator
-        map.region = region
-        let polyLine = MKPolyline(coordinates: lineCoordinates, count: lineCoordinates.count)
-        map.addOverlay(polyLine)
+        if region.isValid {
+            map.region = region
+        }
         map.showsUserLocation = true
+        
+        tracks.map {
+            $0.trackPoints.map { CLLocationCoordinate2D($0) }
+        }.enumerated().forEach {
+            let polyLine = ColorPolyLine(coordinates: $0.element, count: $0.element.count)
+            polyLine.color = UIColor.color(for: $0.offset)
+            map.addOverlay(polyLine)
+        }
+        
         return map
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        (uiView as? MKMapView)?.region = region
+        let map = uiView as? MKMapView
+        if region.isValid {
+            map?.setRegion(region, animated: true)
+        }
+        
+        map?.removeOverlays(map?.overlays ?? [])
+        let overlays: [MKOverlay] = tracks.map {
+            $0.trackPoints.map { CLLocationCoordinate2D($0) }
+        }.enumerated().map {
+            let polyLine = ColorPolyLine(coordinates: $0.element, count: $0.element.count)
+            polyLine.color = UIColor.color(for: $0.offset)
+            return polyLine
+        }
+        map?.addOverlays(overlays)
     }
     
     func makeCoordinator() -> Coordinator {
@@ -39,9 +62,9 @@ struct MapView: UIViewRepresentable {
         }
         
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-            if let routePolyline = overlay as? MKPolyline {
+            if let routePolyline = overlay as? ColorPolyLine {
                 let renderer = MKPolylineRenderer(polyline: routePolyline)
-                renderer.strokeColor = UIColor.systemBlue
+                renderer.strokeColor = routePolyline.color
                 renderer.lineWidth = 5
                 return renderer
               }
@@ -49,4 +72,8 @@ struct MapView: UIViewRepresentable {
         }
     }
     
+}
+
+class ColorPolyLine: MKPolyline {
+    var color: UIColor?
 }

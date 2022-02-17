@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D49" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="GPXTrackManaged" representedClassName=".GPXTrackManaged" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString=" &quot;Track&quot;" spotlightIndexingEnabled="YES"/>
         <attribute name="orderIndex" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="trackDescription" optional="YES" attributeType="String" spotlightIndexingEnabled="YES"/>
-        <attribute name="xmlString" attributeType="String" defaultValueString="&quot;&quot;"/>
         <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GPXTrackManaged" inverseName="parent" inverseEntity="GPXTrackManaged"/>
         <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GPXTrackManaged" inverseName="children" inverseEntity="GPXTrackManaged"/>
+        <relationship name="xml" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="XML" inverseName="parent" inverseEntity="XML"/>
+    </entity>
+    <entity name="XML" representedClassName="XML" syncable="YES" codeGenerationType="class">
+        <attribute name="stringValue" optional="YES" attributeType="String"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GPXTrackManaged" inverseName="xml" inverseEntity="GPXTrackManaged"/>
     </entity>
     <fetchRequest name="fetchTopLevel" entity="GPXTrackManaged" predicateString="parent == nil" resultType="1"/>
     <elements>
         <element name="GPXTrackManaged" positionX="-63" positionY="-9" width="128" height="134"/>
+        <element name="XML" positionX="-54" positionY="54" width="128" height="59"/>
     </elements>
 </model>

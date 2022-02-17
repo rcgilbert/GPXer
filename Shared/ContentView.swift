@@ -26,8 +26,8 @@ struct ContentView: View {
         )
     private var tracks: FetchedResults<GPXTrackManaged>
     
-    @State var fileURL: URL?
     @State var showDocumentPicker = false
+    @State var showCompoundGPXView = false
     @State var error: Error? {
         didSet {
             showError = error != nil
@@ -35,16 +35,16 @@ struct ContentView: View {
     }
     @State var showError = false
     
+    @State var compoundGPXName: String = ""
+    
     @StateObject var gpxLoader: GPXLoader = GPXLoader()
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(tracks) { track in
+                ForEach(tracks, id: \.objectID) { track in
                     NavigationLink {
-                        if let track = try? track.track {
-                            TrackDetails(track: track)
-                        }
+                        TrackDetailsView(trackManaged: track)
                     } label: {
                         VStack(alignment: .leading) {
                             Text(track.name!)
@@ -67,8 +67,17 @@ struct ContentView: View {
                 }
 #endif
                 ToolbarItem {
-                    Button {
-                        showDocumentPicker.toggle()
+                    Menu {
+                        Button {
+                            showDocumentPicker.toggle()
+                        } label: {
+                            Label("Add GPX", systemImage: "doc")
+                        }
+                        Button {
+                            showCompoundGPXView.toggle()
+                        } label: {
+                            Label("Create Compound Track", systemImage: "doc.on.doc")
+                        }
                     } label: {
                         Label("Add Item", systemImage: "plus")
                     }
@@ -86,9 +95,14 @@ struct ContentView: View {
             GPXDocumentPicker { urls in
                 gpxLoader.getTracks(urls)
             }
-        }.alert(error?.localizedDescription ?? "Error Occured", isPresented: $showError) {
+        }
+        .sheet(isPresented: $showCompoundGPXView) {
+            CreateCompoundGPXView()
+        }
+        .alert(error?.localizedDescription ?? "Error Occured", isPresented: $showError) {
             
         }
+
     }
     
     func move(from source: IndexSet, to destination: Int) {
@@ -119,11 +133,8 @@ struct ContentView: View {
 
     private func addTrack(_ track: GPXTrack) {
         withAnimation {
-            let newItem = GPXTrackManaged(context: viewContext)
-            newItem.name = track.title
-            newItem.date = track.date ?? Date()
-            newItem.trackDescription = track.description
-            newItem.xmlString = GPXExporter(track: track).xmlString
+            let newItem = GPXTrackManaged(track,
+                                          context: self.viewContext)
             newItem.orderIndex = Int32(tracks.count)
             do {
                 try viewContext.save()
