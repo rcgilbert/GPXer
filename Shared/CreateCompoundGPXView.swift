@@ -45,18 +45,22 @@ struct CreateCompoundGPXView: View {
                     }
                 } footer: {
                     HStack {
-                        Spacer()
                         Button {
                             showDocumentPicker.toggle()
                         } label: {
-                            Text("Add Tracks")
-                                .font(.body)
-                                .fontWeight(.medium)
-                                .frame(minWidth: 200)
-                                .padding(4)
+                            Label {
+                                Text("Add Tracks")
+                                    .font(.body)
+                                    .fontWeight(.medium)
+                            } icon: {
+                                Image(systemName: "plus.circle")
+                                    .font(.body.weight(.medium))
+                            }
+                            .frame(maxWidth: .infinity)
+                            .padding(4)
                         }
                         .buttonStyle(.borderedProminent)
-                        Spacer()
+                        .scaledToFill()
                     }
                    
                 }
@@ -83,7 +87,9 @@ struct CreateCompoundGPXView: View {
                 ToolbarItem(placement:
                                     .navigationBarTrailing) {
                     Button("Save") {
-                        save()
+                        if !trackTitle.isEmpty && !tracks.isEmpty {
+                            save()
+                        }
                     }
                 }
                 

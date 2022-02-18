@@ -19,6 +19,7 @@ struct TrackDetailsView: View {
     @State var trackTitle: String = ""
     @State var showDocumentPicker = false
     @State var allTracks: [GPXTrack] = []
+    @State var isMapExpanded = false
     
     @StateObject var locationManager = LocationManager()
     @StateObject var gpxLoader: GPXLoader = GPXLoader()
@@ -26,11 +27,31 @@ struct TrackDetailsView: View {
     var body: some View {
         List {
             Section {
-                MapView(region: $region,
-                        tracks: $allTracks)
-                    .frame(height: 300)
-                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                    .listRowSeparator(.hidden)
+                ZStack {
+                    MapView(region: $region,
+                            tracks: $allTracks)
+                        .frame(minHeight: 300)
+                    VStack {
+                        Spacer()
+                        HStack(spacing: 16) {
+                            Spacer()
+                            Button {
+                                withAnimation {
+                                    isMapExpanded.toggle()
+                                }
+                            } label: {
+                                Image(systemName: isMapExpanded ? "arrow.down.forward.and.arrow.up.backward": "arrow.up.left.and.arrow.down.right")
+                                    .padding(8)
+                                    .foregroundColor(Color(uiColor: UIColor.label))
+                                    .background(.ultraThinMaterial)
+                                    .cornerRadius(5)
+                                    .offset(CGSize(width: -8, height: -8))
+                            }
+                        }
+                    }
+                }
+                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                .listRowSeparator(.hidden)
             }
             Section {
                 HStack {
@@ -96,10 +117,14 @@ struct TrackDetailsView: View {
             }
 #endif
             ToolbarItem {
-                Button {
-                    showDocumentPicker.toggle()
-                } label: {
-                    Label("Add Item", systemImage: "plus")
+                if trackManaged.isCompoundTrack {
+                    Button {
+                        showDocumentPicker.toggle()
+                    } label: {
+                        Label("Add Item", systemImage: "plus")
+                    }
+                } else {
+                    EmptyView()
                 }
             }
         }

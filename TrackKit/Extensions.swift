@@ -77,6 +77,49 @@ public extension GPXTrackManaged {
         trackDescription = track.description
         xml = XML(GPXExporter(track: track).xmlString, context: context)
     }
+    
+    static func fetchTrack(for intent: GetMileMarkerIntent) -> GPXTrackManaged? {
+        guard let trackId = intent.track?.identifier else {
+            return nil
+        }
+        
+        let request = GPXTrackManaged.fetchRequest()
+        request.fetchLimit = 1
+        request.predicate = NSPredicate(format: "name LIKE %@", trackId)
+        
+        guard let track = try? PersistenceController.shared.container.viewContext.fetch(request).first else {
+            return nil
+        }
+        
+        return track
+    }
+    
+    func distance(to: CLLocation) async -> Measurement<UnitLength>? {
+        if isCompoundTrack {
+            return await Task(priority: .userInitiated) {
+                let tracks = orderedChildren?
+                    .compactMap { try? $0.track } ?? []
+                let minTrackMapped = tracks
+                    .enumerated()
+                    .map {
+                        (index: $0, distance: $1.closetPoint(to: to)?.location.distance(from: to))
+                    }.min {
+                        ($0.distance ?? .infinity) < ($1.distance ?? .infinity)
+                    }
+                if let minTrackMapped = minTrackMapped {
+                    let distance = tracks[0..<minTrackMapped.index].reduce(0) { partialResult, track in
+                        partialResult + track.graph.distance
+                    }
+                    return Measurement<UnitLength>(value: distance, unit: .meters)  + (tracks[minTrackMapped.index].distance(to: to) ?? Measurement<UnitLength>(value: 0, unit: .meters))
+                    }
+                return nil
+            }.value
+        } else {
+            return await Task(priority: .userInitiated) {
+                try? self.track.distance(to: to)
+            }.value
+        }
+    }
 }
 
 public extension XML {

@@ -15,9 +15,9 @@ import CoreData
 public class GetMileMarkerIntentHandler: NSObject, GetMileMarkerIntentHandling {
     
     public func handle(intent: GetMileMarkerIntent) async -> GetMileMarkerIntentResponse {
-        guard let track = GPXTrack(intent: intent),
+        guard let track = GPXTrackManaged.fetchTrack(for: intent),
               let location = intent.location?.location,
-              let distance = track.distance(to: location) else {
+              let distance = await track.distance(to: location) else {
             return GetMileMarkerIntentResponse(code: .failure, userActivity: nil)
         }
         
@@ -27,6 +27,7 @@ public class GetMileMarkerIntentHandler: NSObject, GetMileMarkerIntentHandling {
     
     public func provideTrackOptionsCollection(for intent: GetMileMarkerIntent) async throws -> INObjectCollection<Track> {
         let fetch: NSFetchRequest<GPXTrackManaged> = GPXTrackManaged.fetchRequest()
+        fetch.predicate = NSPredicate(format: "parent = nil")
         let context = PersistenceController.shared.container.viewContext
         let tracks = try context.fetch(fetch)
         return INObjectCollection(items: tracks.map { Track(identifier: $0.name ?? "Track", display: $0.name ?? "Track") })
