@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4417727B27C02EAD00297E37 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4417727A27C02EAD00297E37 /* ShareSheet.swift */; };
 		4482504E27B5AA90006D7A2B /* GPXDocumentPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482504D27B5AA90006D7A2B /* GPXDocumentPicker.swift */; };
 		4482505527B5BFC6006D7A2B /* TrackDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4482505427B5BFC6006D7A2B /* TrackDetailsView.swift */; };
 		4482505927B5C25E006D7A2B /* CA_Sec_A_tracks.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 4482505827B5C15F006D7A2B /* CA_Sec_A_tracks.gpx */; };
@@ -115,6 +116,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4417727A27C02EAD00297E37 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		4482504D27B5AA90006D7A2B /* GPXDocumentPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPXDocumentPicker.swift; sourceTree = "<group>"; };
 		4482505127B5BA71006D7A2B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4482505427B5BFC6006D7A2B /* TrackDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDetailsView.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 				4482505B27B604E8006D7A2B /* MapView.swift */,
 				448B395527B7241E005309A1 /* LocationManager.swift */,
 				448B395727B73124005309A1 /* GPXLoader.swift */,
+				4417727A27C02EAD00297E37 /* ShareSheet.swift */,
 				44F3E60927B5930800716DD4 /* Assets.xcassets */,
 			);
 			path = Shared;
@@ -491,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				448B395827B73124005309A1 /* GPXLoader.swift in Sources */,
+				4417727B27C02EAD00297E37 /* ShareSheet.swift in Sources */,
 				448250C427B6C3AB006D7A2B /* Intents.intentdefinition in Sources */,
 				44E0E44827BC5A99002A9115 /* CreateCompoundGPXView.swift in Sources */,
 				4482505C27B604E8006D7A2B /* MapView.swift in Sources */,

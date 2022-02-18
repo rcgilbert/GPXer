@@ -120,6 +120,16 @@ public extension GPXTrackManaged {
             }.value
         }
     }
+    
+    func getFiles() async throws -> [URL] {
+        return try await Task(priority: .userInitiated) {
+            return ([try xml?.stringValue?.gpxFile(named: name ?? "Track \(UUID().uuidString)")]).compactMap { $0 }
+            + (try orderedChildren?.compactMap {
+                try $0.xml?.stringValue?.gpxFile(named: $0.name ?? "Track \(UUID().uuidString)")
+            } ?? [])
+                
+        }.value
+    }
 }
 
 public extension XML {
@@ -243,3 +253,21 @@ public extension MKCoordinateRegion {
         CLLocationCoordinate2DIsValid(center)
     }
 }
+
+extension String {
+    enum StringGPXError: Error {
+        case noData
+    }
+    
+    func gpxFile(named: String) throws -> URL {
+        guard let data = data(using: .utf8) else {
+            throw StringGPXError.noData
+        }
+        
+        let url = FileManager.default.temporaryDirectory.appendingPathComponent("\(named).gpx")
+        try data.write(to: url)
+        return url
+    }
+}
+
+

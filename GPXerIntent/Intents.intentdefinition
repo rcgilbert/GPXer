@@ -65,7 +65,7 @@
 					<key>INIntentParameterMetadata</key>
 					<dict>
 						<key>INIntentParameterMetadataType</key>
-						<string>Address</string>
+						<string>Name</string>
 					</dict>
 					<key>INIntentParameterName</key>
 					<string>location</string>
@@ -203,7 +203,7 @@
 				</array>
 			</dict>
 			<key>INIntentTitle</key>
-			<string>Get Mile Marker</string>
+			<string>Get Distance on Track</string>
 			<key>INIntentTitleID</key>
 			<string>L0hRAh</string>
 			<key>INIntentType</key>

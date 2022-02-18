@@ -14,103 +14,128 @@ struct TrackDetailsView: View {
     @Environment(\.editMode) var mode
     @Environment(\.managedObjectContext) private var viewContext
     
+    @Namespace var namespace
+    
     @State var trackManaged: GPXTrackManaged
     @State var region: MKCoordinateRegion = MKCoordinateRegion()
     @State var trackTitle: String = ""
     @State var showDocumentPicker = false
     @State var allTracks: [GPXTrack] = []
     @State var isMapExpanded = false
+    @State var shareFiles: [URL]?
     
     @StateObject var locationManager = LocationManager()
     @StateObject var gpxLoader: GPXLoader = GPXLoader()
     
     var body: some View {
-        List {
-            Section {
-                ZStack {
-                    MapView(region: $region,
-                            tracks: $allTracks)
-                        .frame(minHeight: 300)
-                    VStack {
-                        Spacer()
-                        HStack(spacing: 16) {
+        ZStack {
+            List {
+                Section {
+                    ZStack {
+                        MapView(region: $region,
+                                tracks: $allTracks)
+                            .frame(minHeight: 300)
+                            
+                        VStack {
                             Spacer()
-                            Button {
-                                withAnimation {
-                                    isMapExpanded.toggle()
+                            HStack(spacing: 16) {
+                                Spacer()
+                                Button {
+                                    withAnimation {
+                                        isMapExpanded.toggle()
+                                    }
+                                } label: {
+                                    Image(systemName: isMapExpanded ? "arrow.down.forward.and.arrow.up.backward": "arrow.up.left.and.arrow.down.right")
+                                        .padding(8)
+                                        .foregroundColor(Color(uiColor: UIColor.label))
+                                        .background(.ultraThinMaterial)
+                                        .cornerRadius(5)
+                                        .offset(CGSize(width: -8, height: -8))
                                 }
-                            } label: {
-                                Image(systemName: isMapExpanded ? "arrow.down.forward.and.arrow.up.backward": "arrow.up.left.and.arrow.down.right")
-                                    .padding(8)
-                                    .foregroundColor(Color(uiColor: UIColor.label))
-                                    .background(.ultraThinMaterial)
-                                    .cornerRadius(5)
-                                    .offset(CGSize(width: -8, height: -8))
                             }
                         }
+                    }.matchedGeometryEffect(id: "map", in: namespace)
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .listRowSeparator(.hidden)
+                }
+                Section {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 16) {
+                            if mode?.wrappedValue.isEditing ?? false {
+                                TextField(trackTitle, text: $trackTitle)
+                                    .font(.largeTitle)
+                                    .textFieldStyle(.roundedBorder)
+                            } else {
+                                Text(trackTitle)
+                                    .font(.largeTitle)
+                            }
+                            if !allTracks.isEmpty {
+                                HStack(spacing: 16) {
+                                    HStack {
+                                        Image(systemName: "mappin")
+                                            .frame(width: 30, height: 30, alignment: .center)
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text("Total Distance")
+                                                .fontWeight(.medium)
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                            Text(Measurement(value: allTracks.totalDistance,
+                                                             unit: UnitLength.meters),
+                                                 formatter: measurementFormatter)
+                                        }
+                                    }
+                                    HStack {
+                                        Image(systemName: "chart.line.uptrend.xyaxis")
+                                            .frame(width: 30, height: 30, alignment: .center)
+                                        VStack(alignment: .leading, spacing: 4) {
+                                            Text("Elevation Gain")
+                                                .fontWeight(.medium)
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                            Text(Measurement(value: allTracks.totalElevationGain,
+                                                             unit: UnitLength.meters),
+                                                 formatter: measurementFormatter)
+                                        }
+                                    }
+                                    Spacer()
+                                }
+                            }
+                        }.padding()
+                        Spacer()
+                    }
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                    .listRowSeparator(.hidden)
+                    .background { Color(UIColor.systemBackground) }
+                }
+                Section {
+                    if trackManaged.isCompoundTrack {
+                        TrackChildrenList(parent: trackManaged)
                     }
                 }
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .listRowSeparator(.hidden)
             }
-            Section {
-                HStack {
-                    VStack(alignment: .leading, spacing: 16) {
-                        if mode?.wrappedValue.isEditing ?? false {
-                            TextField(trackTitle, text: $trackTitle)
-                                .font(.largeTitle)
-                                .textFieldStyle(.roundedBorder)
-                        } else {
-                            Text(trackTitle)
-                                .font(.largeTitle)
-                        }
-                        if !allTracks.isEmpty {
-                            HStack(spacing: 16) {
-                                HStack {
-                                    Image(systemName: "mappin")
-                                        .frame(width: 30, height: 30, alignment: .center)
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text("Total Distance")
-                                            .fontWeight(.medium)
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                        Text(Measurement(value: allTracks.totalDistance,
-                                                         unit: UnitLength.meters),
-                                             formatter: measurementFormatter)
-                                    }
-                                }
-                                HStack {
-                                    Image(systemName: "chart.line.uptrend.xyaxis")
-                                        .frame(width: 30, height: 30, alignment: .center)
-                                    VStack(alignment: .leading, spacing: 4) {
-                                        Text("Elevation Gain")
-                                            .fontWeight(.medium)
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                        Text(Measurement(value: allTracks.totalElevationGain,
-                                                         unit: UnitLength.meters),
-                                             formatter: measurementFormatter)
-                                    }
-                                }
-                                Spacer()
-                            }
-                        }
-                    }.padding()
-                    Spacer()
-                }
-                .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                .listRowSeparator(.hidden)
-                .background { Color(UIColor.systemBackground) }
-            }
-            Section {
-                if trackManaged.isCompoundTrack {
-                    TrackChildrenList(parent: trackManaged)
-                }
+            .listStyle(.plain)
+            if isMapExpanded {
+                ExpandedMapView(region: $region, allTracks: $allTracks, isMapExpanded: $isMapExpanded)
+                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    .matchedGeometryEffect(id: "map", in: namespace)
+                    .transition(.scale)
             }
         }
-        .listStyle(.plain)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    Task {
+                        do {
+                            self.shareFiles = try await trackManaged.getFiles()
+                        } catch {
+                            // TODO: Error handling
+                        }
+                    }
+                } label: {
+                    Image(systemName: "square.and.arrow.up")
+                }
+            }
 #if os(iOS)
             ToolbarItem(placement: .navigationBarTrailing) {
                 EditButton()
@@ -127,6 +152,8 @@ struct TrackDetailsView: View {
                     EmptyView()
                 }
             }
+            
+            
         }
         .onChange(of: mode!.wrappedValue.isEditing) { isEditing in
             if !isEditing && trackTitle != trackManaged.name {
@@ -162,6 +189,9 @@ struct TrackDetailsView: View {
             GPXDocumentPicker { urls in
                 gpxLoader.getTracks(urls)
             }
+        }
+        .sheet(item: $shareFiles) { files in
+            ShareSheet(activityItems: files)
         }
         .onAppear {
             region = allTracks.coordinateRegion
@@ -298,6 +328,41 @@ struct TrackChildrenList: View {
     }
 }
 
+struct ExpandedMapView: View {
+    @Namespace var namespace
+    
+    @Binding var region: MKCoordinateRegion
+    @Binding var allTracks: [GPXTrack]
+    @Binding var isMapExpanded: Bool
+    
+    var body: some View {
+        ZStack {
+            MapView(region: $region,
+                    tracks: $allTracks)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .edgesIgnoringSafeArea([.bottom, .leading, .trailing])
+            VStack {
+                Spacer()
+                HStack(spacing: 16) {
+                    Spacer()
+                    Button {
+                        withAnimation {
+                            isMapExpanded.toggle()
+                        }
+                    } label: {
+                        Image(systemName: isMapExpanded ? "arrow.down.forward.and.arrow.up.backward": "arrow.up.left.and.arrow.down.right")
+                            .padding(8)
+                            .foregroundColor(Color(uiColor: UIColor.label))
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(5)
+                            .offset(CGSize(width: -8, height: -8))
+                    }
+                }
+            }
+        }
+    }
+}
+
 private var measurementFormatter: MeasurementFormatter = {
     let formatter = MeasurementFormatter()
     formatter.locale = .current
@@ -325,3 +390,8 @@ struct TrackDetails_Previews: PreviewProvider {
 }
 
 
+extension Array: Identifiable where Element: Hashable {
+    public var id: Self {
+        self
+    }
+}
