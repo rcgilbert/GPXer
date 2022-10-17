@@ -372,17 +372,24 @@ private var measurementFormatter: MeasurementFormatter = {
 
 struct TrackDetails_Previews: PreviewProvider {
     static var context = PersistenceController.preview.container.viewContext
+    @State static var mode: EditMode = .inactive
     
     static var previews: some View {
-        let trackURL = Bundle.main.url(forResource: "CA_Sec_A_tracks", withExtension: "gpx")
-        switch GPXFileParser(url: trackURL!)?.parse() {
+        guard let trackURL = Bundle.main.url(forResource: "CA_Sec_A_tracks", withExtension: "gpx") else {
+            fatalError("Missing file")
+        }
+        
+        switch GPXFileParser(url: trackURL)?.parse() {
         case .failure(let error):
             fatalError("\(error)")
         case .success(let track):
-            return TrackDetailsView(trackManaged: GPXTrackManaged(track,
-                                                                  context: context))
-                .environment(\.managedObjectContext, context)
-               
+            
+            return NavigationView {
+                TrackDetailsView(trackManaged: GPXTrackManaged(track,
+                                                                      context: context))
+                    .environment(\.managedObjectContext, context)
+                    .environment(\.editMode, $mode)
+            }
         case .none:
             fatalError("Missing file")
         }
